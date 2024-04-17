@@ -1,1 +1,1 @@
-# Spotify-playlist-recommendation-system
+# spotify-playlist-recommendation-system

@@ -18,5 +18,3 @@
 ## Running Locally
 
 - `pip install -r requirements.txt`
-- `jupyter nbconvert --execute playlist-data-extraction.ipynb` to download playlist-interaction matrices
-- `jupyter nbconvert --execute collaborative-filtering/cf-knn-ipynb` to generate cf candidates

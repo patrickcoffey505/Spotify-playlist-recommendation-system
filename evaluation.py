@@ -22,8 +22,8 @@ def avg_precision(pred, actual):
     if true_positives(pred, actual) == 0:
         return 0.0
     
-    for i, cur in enumerate(actual):
-        if cur in pred:
+    for i, cur in enumerate(pred):
+        if cur in actual:
             _tp += 1
             precision += _tp / (i + 1)
     return precision / _tp
@@ -41,9 +41,9 @@ def precision_at_k(pred, actual, k):
     num_users = len(actual)
     
     for i in range(num_users):
-        true_set = set(actual[i])
-        pred_set = set(pred[i][:k])
-        precision_sum += true_positives(pred_set, true_set) / float(len(true_set))
+        true_set = actual[i]
+        pred_set = pred[i][:k]
+        precision_sum += true_positives(pred_set, true_set) / float(k)
     
     precision_at_k = precision_sum / num_users
     return precision_at_k
@@ -56,8 +56,8 @@ def avg_recall(pred, actual):
     if true_positives(pred, actual) == 0:
         return 0.0
     
-    for i, cur in enumerate(pred):
-        if cur in actual:
+    for i, cur in enumerate(actual):
+        if cur in pred:
             _tp += 1
             recall += _tp / (i + 1)
     return recall / _tp
@@ -76,9 +76,9 @@ def recall_at_k(pred, actual, k):
     num_users = len(actual)
     
     for i in range(num_users):
-        true_set = set(actual[i])
-        pred_set = set(pred[i][:k])
-        recall_sum += true_positives(pred_set, true_set) / float(len(pred[i]))
+        true_set = actual[i]
+        pred_set = pred[i][:k]
+        recall_sum += true_positives(pred_set, true_set) / float(len(true_set))
     
     recall_at_k = recall_sum / num_users
     return recall_at_k
